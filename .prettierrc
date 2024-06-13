@@ -2,8 +2,11 @@
   "useTabs": false,
   "semi": false,
   "singleQuote": true,
-  "jsxSingleQuote": true,
-  "bracketSameLine": true,
   "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "bracketSameLine": true,
+  "editorconfig": true,
+  "jsxSingleQuote": false,
+  "printWidth": 100,
   "trailingComma": "all"
 }
