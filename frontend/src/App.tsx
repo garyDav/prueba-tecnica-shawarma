@@ -1,9 +1,28 @@
+import { useState } from 'react'
+
 import './App.css'
 
+const APP_STATUS = {
+  IDLE: 'idle', // al entrar
+  ERROR: 'error', // cuando hay un error
+  UPLOADING: 'uploading', // al elegir el archivo
+  READY_UPLOAD: 'ready_upload', // mientras de sube el archivo
+  READY_USAGE: 'ready_usage', // después de subir
+} as const
+
+type AppStatusType = (typeof APP_STATUS)[keyof typeof APP_STATUS]
+
 const App = () => {
+  const [appStatus, setAppStatus] = useState<AppStatusType>(APP_STATUS.IDLE)
+  const [file, setFile] = useState<File | null>(null)
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const [file] = event.target.files ?? []
-    console.log(file)
+
+    if (file) {
+      setFile(file)
+      setAppStatus(APP_STATUS.READY_UPLOAD)
+    }
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
