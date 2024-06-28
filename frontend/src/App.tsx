@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Toaster, toast } from 'sonner'
 
 import { uploadFile } from './services/upload'
+import { Search } from './steps/Search'
 import { Data } from './types'
 import './App.css'
 
@@ -77,6 +78,7 @@ const App = () => {
           )}
         </form>
       )}
+      {appStatus === APP_STATUS.READY_USAGE && <Search initialData={data} />}
     </>
   )
 }
